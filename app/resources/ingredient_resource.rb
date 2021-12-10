@@ -7,6 +7,8 @@ class IngredientResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :ingredient_supplier_joins
+
   has_many   :recipe_ingredient_joins
 
   # Indirect associations
