@@ -16,7 +16,7 @@
 
     <%= f.label :business_id %>
     <!-- Input for business_id start -->
-    <%= f.number_field :business_id, class: business_class, placeholder: "Enter business" %>
+    <%= f.collection_select :business_id, BusinessAccount.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for business_id end -->
     <% if business_was_invalid %>
       <% recipe.errors.full_messages_for(:business).each do |message| %>
