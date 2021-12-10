@@ -9,6 +9,8 @@ class IngredientReviewResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :ingredient_supplier_join
+
   belongs_to :ingredient_reviewers,
              resource: BusinessAccountResource,
              foreign_key: :ingredient_reviewer

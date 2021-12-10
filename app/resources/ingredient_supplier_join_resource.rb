@@ -11,6 +11,8 @@ class IngredientSupplierJoinResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :ingredient_reviews
+
   belongs_to :ingredient
 
   belongs_to :supplier,
