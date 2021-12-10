@@ -8,6 +8,9 @@ class IngredientSupplierResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :supplier_reviews,
+             foreign_key: :supplier_id
+
   has_many   :ingredient_supplier_joins,
              foreign_key: :supplier_id
 
