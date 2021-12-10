@@ -10,6 +10,10 @@ class SupplierReviewResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :chef_reviewer,
+             resource: BusinessAccountResource,
+             foreign_key: :reviewer
+
   # Indirect associations
 
 end
