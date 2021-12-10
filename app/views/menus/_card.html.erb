@@ -1,0 +1,51 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Menu #<%= menu.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Menu name</dt>
+      <!-- Display menu_name start -->
+      <dd><%= menu.menu_name %></dd>
+      <!-- Display menu_name end -->
+
+      <dt>Menu creator</dt>
+      <!-- Display menu_creator start -->
+      <dd><%= menu.menu_creator %></dd>
+      <!-- Display menu_creator end -->
+
+      <dt>Menu description</dt>
+      <!-- Display menu_description start -->
+      <dd><%= menu.menu_description %></dd>
+      <!-- Display menu_description end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back menu, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link menu start -->
+      <div class="col">
+        <%= link_to edit_menu_url(menu), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link menu end -->
+
+      <!-- Delete link menu start -->
+      <div class="col">
+        <%= link_to menu, method: :delete, data: { confirm: "Do you really want to delete this menu?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link menu end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(menu.updated_at) %> ago
+  </div>
+</div>
