@@ -8,6 +8,10 @@ class RecipeResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :chef,
+             resource: BusinessAccountResource,
+             foreign_key: :business_id
+
   # Indirect associations
 
 end

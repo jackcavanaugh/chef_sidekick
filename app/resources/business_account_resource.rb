@@ -8,6 +8,9 @@ class BusinessAccountResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :recipes,
+             foreign_key: :business_id
+
   # Indirect associations
 
 end
