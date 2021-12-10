@@ -42,7 +42,7 @@
 
     <%= f.label :menu_creator %>
     <!-- Input for menu_creator start -->
-    <%= f.number_field :menu_creator, class: menu_creator_class, placeholder: "Enter menu creator" %>
+    <%= f.collection_select :menu_creator, BusinessAccount.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for menu_creator end -->
     <% if menu_creator_was_invalid %>
       <% menu.errors.full_messages_for(:menu_creator).each do |message| %>
