@@ -1,6 +1,10 @@
 class IngredientSupplier < ApplicationRecord
   # Direct associations
 
+  has_many   :ingredient_supplier_joins,
+             :foreign_key => "supplier_id",
+             :dependent => :destroy
+
   # Indirect associations
 
   # Validations
