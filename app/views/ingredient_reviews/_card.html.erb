@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>Ingredient reviewer</dt>
       <!-- Display ingredient_reviewer start -->
-      <dd><%= ingredient_review.ingredient_reviewer %></dd>
+      <dd>
+        <% if @ingredient_review.ingredient_reviewers.present? %>
+          <%= link_to ingredient_review.ingredient_reviewers, ingredient_review.ingredient_reviewers %>
+        <% end %>
+      </dd>
       <!-- Display ingredient_reviewer end -->
 
       <dt>Ingredient supplier join</dt>
       <!-- Display ingredient_supplier_join_id start -->
-      <dd><%= ingredient_review.ingredient_supplier_join_id %></dd>
+      <dd>
+        <% if @ingredient_review.ingredient_supplier_join.present? %>
+          <%= link_to ingredient_review.ingredient_supplier_join, ingredient_review.ingredient_supplier_join %>
+        <% end %>
+      </dd>
       <!-- Display ingredient_supplier_join_id end -->
 
       <dt>Ingredient supplier rating</dt>

@@ -12,7 +12,11 @@
 
       <dt>Menu creator</dt>
       <!-- Display menu_creator start -->
-      <dd><%= menu.menu_creator %></dd>
+      <dd>
+        <% if @menu.menu_creators.present? %>
+          <%= link_to menu.menu_creators, menu.menu_creators %>
+        <% end %>
+      </dd>
       <!-- Display menu_creator end -->
 
       <dt>Menu description</dt>

@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Recipe</dt>
       <!-- Display recipe_id start -->
-      <dd><%= order.recipe_id %></dd>
+      <dd>
+        <% if @order.recipe.present? %>
+          <%= link_to order.recipe, order.recipe %>
+        <% end %>
+      </dd>
       <!-- Display recipe_id end -->
 
       <dt>Customer comments</dt>

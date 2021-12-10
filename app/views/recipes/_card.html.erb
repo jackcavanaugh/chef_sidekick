@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Business</dt>
       <!-- Display business_id start -->
-      <dd><%= recipe.business_id %></dd>
+      <dd>
+        <% if @recipe.chef.present? %>
+          <%= link_to recipe.chef, recipe.chef %>
+        <% end %>
+      </dd>
       <!-- Display business_id end -->
 
       <dt>Recipe name</dt>

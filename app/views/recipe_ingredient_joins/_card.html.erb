@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>Recipe</dt>
       <!-- Display recipe_id start -->
-      <dd><%= recipe_ingredient_join.recipe_id %></dd>
+      <dd>
+        <% if @recipe_ingredient_join.recipe.present? %>
+          <%= link_to recipe_ingredient_join.recipe, recipe_ingredient_join.recipe %>
+        <% end %>
+      </dd>
       <!-- Display recipe_id end -->
 
       <dt>Ingredient</dt>
       <!-- Display ingredient_id start -->
-      <dd><%= recipe_ingredient_join.ingredient_id %></dd>
+      <dd>
+        <% if @recipe_ingredient_join.ingredient.present? %>
+          <%= link_to recipe_ingredient_join.ingredient, recipe_ingredient_join.ingredient %>
+        <% end %>
+      </dd>
       <!-- Display ingredient_id end -->
 
     </dl>

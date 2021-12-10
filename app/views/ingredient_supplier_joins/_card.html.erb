@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>Ingredient</dt>
       <!-- Display ingredient_id start -->
-      <dd><%= ingredient_supplier_join.ingredient_id %></dd>
+      <dd>
+        <% if @ingredient_supplier_join.ingredient.present? %>
+          <%= link_to ingredient_supplier_join.ingredient, ingredient_supplier_join.ingredient %>
+        <% end %>
+      </dd>
       <!-- Display ingredient_id end -->
 
       <dt>Supplier</dt>
       <!-- Display supplier_id start -->
-      <dd><%= ingredient_supplier_join.supplier_id %></dd>
+      <dd>
+        <% if @ingredient_supplier_join.supplier.present? %>
+          <%= link_to ingredient_supplier_join.supplier, ingredient_supplier_join.supplier %>
+        <% end %>
+      </dd>
       <!-- Display supplier_id end -->
 
       <dt>Preferred supplier</dt>
