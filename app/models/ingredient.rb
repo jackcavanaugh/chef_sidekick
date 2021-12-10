@@ -1,6 +1,9 @@
 class Ingredient < ApplicationRecord
   # Direct associations
 
+  has_many   :recipe_ingredient_joins,
+             :dependent => :destroy
+
   # Indirect associations
 
   # Validations
