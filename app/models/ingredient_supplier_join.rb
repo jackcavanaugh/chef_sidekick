@@ -1,6 +1,9 @@
 class IngredientSupplierJoin < ApplicationRecord
   # Direct associations
 
+  belongs_to :ingredient,
+             :counter_cache => true
+
   belongs_to :supplier,
              :class_name => "IngredientSupplier"
 

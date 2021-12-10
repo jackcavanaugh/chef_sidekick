@@ -4,6 +4,8 @@ RSpec.describe IngredientSupplierJoin, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:ingredient) }
+
     it { should belong_to(:supplier) }
 
     end
