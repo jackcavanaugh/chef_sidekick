@@ -1,0 +1,57 @@
+<% was_validated = recipe_menu_join.errors.any? %>
+
+<%= form_with(model: recipe_menu_join, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for menu_id start -->
+  <div class="form-group">
+    <% menu_class = "form-control" %>
+    <% menu_was_invalid = recipe_menu_join.errors.include?(:menu) %>
+
+    <% if was_validated %>
+      <% if menu_was_invalid %>
+        <% menu_class << " is-invalid" %>
+      <% else %>
+        <% menu_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :menu_id %>
+    <!-- Input for menu_id start -->
+    <%= f.number_field :menu_id, class: menu_class, placeholder: "Enter menu" %>
+    <!-- Input for menu_id end -->
+    <% if menu_was_invalid %>
+      <% recipe_menu_join.errors.full_messages_for(:menu).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for menu_id end -->
+  <!-- Label and input for recipe_id start -->
+  <div class="form-group">
+    <% recipe_class = "form-control" %>
+    <% recipe_was_invalid = recipe_menu_join.errors.include?(:recipe) %>
+
+    <% if was_validated %>
+      <% if recipe_was_invalid %>
+        <% recipe_class << " is-invalid" %>
+      <% else %>
+        <% recipe_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :recipe_id %>
+    <!-- Input for recipe_id start -->
+    <%= f.number_field :recipe_id, class: recipe_class, placeholder: "Enter recipe" %>
+    <!-- Input for recipe_id end -->
+    <% if recipe_was_invalid %>
+      <% recipe_menu_join.errors.full_messages_for(:recipe).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for recipe_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :recipe_menu_joins
   resources :ingredient_supplier_joins
   resources :recipe_ingredient_joins
   resources :orders
