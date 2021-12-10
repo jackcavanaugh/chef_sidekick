@@ -29,16 +29,20 @@
 
       <!-- Edit link menu start -->
       <div class="col">
-        <%= link_to edit_menu_url(menu), class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-edit"></i>
+        <% if current_business_account == @menu.menu_creators %>
+          <%= link_to edit_menu_url(menu), class: "btn btn-block btn-sm btn-outline-secondary" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Edit link menu end -->
 
       <!-- Delete link menu start -->
       <div class="col">
-        <%= link_to menu, method: :delete, data: { confirm: "Do you really want to delete this menu?" }, class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_business_account == @menu.menu_creators %>
+          <%= link_to menu, method: :delete, data: { confirm: "Do you really want to delete this menu?" }, class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Delete link menu end -->

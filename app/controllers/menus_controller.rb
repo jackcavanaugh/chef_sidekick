@@ -1,4 +1,6 @@
 class MenusController < ApplicationController
+  before_action :current_business_account_must_be_menu_menu_creators, only: [:edit, :update, :destroy] 
+
   before_action :set_menu, only: [:show, :edit, :update, :destroy]
 
   # GET /menus
@@ -58,6 +60,14 @@ class MenusController < ApplicationController
 
 
   private
+
+  def current_business_account_must_be_menu_menu_creators
+    set_menu
+    unless current_business_account == @menu.menu_creators
+      redirect_back fallback_location: root_path, alert: "You are not authorized for that."
+    end
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_menu
       @menu = Menu.find(params[:id])
