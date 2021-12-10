@@ -8,6 +8,10 @@ class BusinessAccountsController < ApplicationController
 
   # GET /business_accounts/1
   def show
+    @menu = Menu.new
+    @ingredient_review = IngredientReview.new
+    @supplier_review = SupplierReview.new
+    @recipe = Recipe.new
   end
 
   # GET /business_accounts/new

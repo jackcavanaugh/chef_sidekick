@@ -8,6 +8,7 @@ class IngredientSupplierJoinsController < ApplicationController
 
   # GET /ingredient_supplier_joins/1
   def show
+    @ingredient_review = IngredientReview.new
   end
 
   # GET /ingredient_supplier_joins/new
@@ -24,7 +25,12 @@ class IngredientSupplierJoinsController < ApplicationController
     @ingredient_supplier_join = IngredientSupplierJoin.new(ingredient_supplier_join_params)
 
     if @ingredient_supplier_join.save
-      redirect_to @ingredient_supplier_join, notice: 'Ingredient supplier join was successfully created.'
+      message = 'IngredientSupplierJoin was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @ingredient_supplier_join, notice: message
+      end
     else
       render :new
     end

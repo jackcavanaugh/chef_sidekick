@@ -8,6 +8,8 @@ class IngredientsController < ApplicationController
 
   # GET /ingredients/1
   def show
+    @ingredient_supplier_join = IngredientSupplierJoin.new
+    @recipe_ingredient_join = RecipeIngredientJoin.new
   end
 
   # GET /ingredients/new

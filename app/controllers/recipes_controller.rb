@@ -8,6 +8,9 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1
   def show
+    @order = Order.new
+    @recipe_menu_join = RecipeMenuJoin.new
+    @recipe_ingredient_join = RecipeIngredientJoin.new
   end
 
   # GET /recipes/new
@@ -24,7 +27,12 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
 
     if @recipe.save
-      redirect_to @recipe, notice: 'Recipe was successfully created.'
+      message = 'Recipe was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @recipe, notice: message
+      end
     else
       render :new
     end

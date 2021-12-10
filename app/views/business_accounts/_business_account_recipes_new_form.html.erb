@@ -1,0 +1,31 @@
+<!-- Form recipe start -->
+<%= form_with(model: @recipe, local: true) do |f| %>
+<!-- Form recipe end -->
+
+  <!-- Label and input for business_id start -->
+  <!-- Input for business_id start -->
+  <%= f.hidden_field :business_id, value: @business_account.id %>
+  <!-- Input for business_id end -->
+  <!-- Label and input for business_id end -->
+
+  <!-- Label and input for recipe_name start -->
+  <div class="form-group">
+    <%= f.label :recipe_name %>
+
+    <!-- Input for recipe_name start -->
+    <%= f.text_field :recipe_name, class: "form-control" %>
+    <!-- Input for recipe_name end -->
+  </div>
+  <!-- Label and input for recipe_name end -->
+
+  <!-- Label and input for recipe_description start -->
+  <div class="form-group">
+    <%= f.label :recipe_description %>
+    <!-- Input for recipe_description start -->
+    <%= f.text_area :recipe_description, rows: "3", class: "form-control" %>
+    <!-- Input for recipe_description end -->
+  </div>
+  <!-- Label and input for recipe_description end -->
+
+  <%= f.submit "Create recipe", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

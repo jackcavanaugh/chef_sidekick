@@ -1,0 +1,61 @@
+<!-- Form ingredient_supplier_join start -->
+<%= form_with(model: @ingredient_supplier_join, local: true) do |f| %>
+<!-- Form ingredient_supplier_join end -->
+
+  <!-- Label and input for ingredient_id start -->
+  <!-- Input for ingredient_id start -->
+  <%= f.hidden_field :ingredient_id, value: @ingredient.id %>
+  <!-- Input for ingredient_id end -->
+  <!-- Label and input for ingredient_id end -->
+
+  <!-- Label and input for supplier_id start -->
+  <div class="form-group">
+    <%= f.label :supplier_id %>
+
+    <!-- Input for supplier_id start -->
+    <%= f.text_field :supplier_id, class: "form-control" %>
+    <!-- Input for supplier_id end -->
+  </div>
+  <!-- Label and input for supplier_id end -->
+
+  <!-- Label and input for preferred_supplier start -->
+  <div class="form-check">
+    <!-- Input for preferred_supplier start -->
+    <%= f.check_box :preferred_supplier, class: "form-check-input" %>
+    <!-- Input for preferred_supplier end -->
+    <%= f.label :preferred_supplier, class: "form-check-label" %>
+  </div>
+  <!-- Label and input for preferred_supplier end -->
+
+  <!-- Label and input for ingredient_cost start -->
+  <div class="form-group">
+    <%= f.label :ingredient_cost %>
+
+    <!-- Input for ingredient_cost start -->
+    <%= f.text_field :ingredient_cost, class: "form-control" %>
+    <!-- Input for ingredient_cost end -->
+  </div>
+  <!-- Label and input for ingredient_cost end -->
+
+  <!-- Label and input for average_lead_time_in_days start -->
+  <div class="form-group">
+    <%= f.label :average_lead_time_in_days %>
+
+    <!-- Input for average_lead_time_in_days start -->
+    <%= f.text_field :average_lead_time_in_days, class: "form-control" %>
+    <!-- Input for average_lead_time_in_days end -->
+  </div>
+  <!-- Label and input for average_lead_time_in_days end -->
+
+  <!-- Label and input for ingredient_inventory start -->
+  <div class="form-group">
+    <%= f.label :ingredient_inventory %>
+
+    <!-- Input for ingredient_inventory start -->
+    <%= f.text_field :ingredient_inventory, class: "form-control" %>
+    <!-- Input for ingredient_inventory end -->
+  </div>
+  <!-- Label and input for ingredient_inventory end -->
+
+  <%= f.submit "Create ingredient supplier join", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

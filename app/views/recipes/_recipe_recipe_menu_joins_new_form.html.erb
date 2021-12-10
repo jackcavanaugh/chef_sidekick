@@ -1,0 +1,22 @@
+<!-- Form recipe_menu_join start -->
+<%= form_with(model: @recipe_menu_join, local: true) do |f| %>
+<!-- Form recipe_menu_join end -->
+
+  <!-- Label and input for menu_id start -->
+  <div class="form-group">
+    <%= f.label :menu_id %>
+
+    <!-- Input for menu_id start -->
+    <%= f.text_field :menu_id, class: "form-control" %>
+    <!-- Input for menu_id end -->
+  </div>
+  <!-- Label and input for menu_id end -->
+
+  <!-- Label and input for recipe_id start -->
+  <!-- Input for recipe_id start -->
+  <%= f.hidden_field :recipe_id, value: @recipe.id %>
+  <!-- Input for recipe_id end -->
+  <!-- Label and input for recipe_id end -->
+
+  <%= f.submit "Create recipe menu join", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

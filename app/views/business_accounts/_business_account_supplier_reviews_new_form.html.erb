@@ -1,0 +1,51 @@
+<!-- Form supplier_review start -->
+<%= form_with(model: @supplier_review, local: true) do |f| %>
+<!-- Form supplier_review end -->
+
+  <!-- Label and input for reviewer start -->
+  <!-- Input for reviewer start -->
+  <%= f.hidden_field :reviewer, value: @business_account.id %>
+  <!-- Input for reviewer end -->
+  <!-- Label and input for reviewer end -->
+
+  <!-- Label and input for supplier_id start -->
+  <div class="form-group">
+    <%= f.label :supplier_id %>
+
+    <!-- Input for supplier_id start -->
+    <%= f.text_field :supplier_id, class: "form-control" %>
+    <!-- Input for supplier_id end -->
+  </div>
+  <!-- Label and input for supplier_id end -->
+
+  <!-- Label and input for review_title start -->
+  <div class="form-group">
+    <%= f.label :review_title %>
+
+    <!-- Input for review_title start -->
+    <%= f.text_field :review_title, class: "form-control" %>
+    <!-- Input for review_title end -->
+  </div>
+  <!-- Label and input for review_title end -->
+
+  <!-- Label and input for review_rating start -->
+  <div class="form-group">
+    <%= f.label :review_rating %>
+
+    <!-- Input for review_rating start -->
+    <%= f.text_field :review_rating, class: "form-control" %>
+    <!-- Input for review_rating end -->
+  </div>
+  <!-- Label and input for review_rating end -->
+
+  <!-- Label and input for review_content start -->
+  <div class="form-group">
+    <%= f.label :review_content %>
+    <!-- Input for review_content start -->
+    <%= f.text_area :review_content, rows: "3", class: "form-control" %>
+    <!-- Input for review_content end -->
+  </div>
+  <!-- Label and input for review_content end -->
+
+  <%= f.submit "Create supplier review", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

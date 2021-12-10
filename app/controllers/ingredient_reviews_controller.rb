@@ -24,7 +24,12 @@ class IngredientReviewsController < ApplicationController
     @ingredient_review = IngredientReview.new(ingredient_review_params)
 
     if @ingredient_review.save
-      redirect_to @ingredient_review, notice: 'Ingredient review was successfully created.'
+      message = 'IngredientReview was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @ingredient_review, notice: message
+      end
     else
       render :new
     end

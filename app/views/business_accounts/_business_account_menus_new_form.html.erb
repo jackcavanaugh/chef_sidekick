@@ -1,0 +1,32 @@
+<!-- Form menu start -->
+<%= form_with(model: @menu, local: true) do |f| %>
+<!-- Form menu end -->
+
+  <!-- Label and input for menu_name start -->
+  <div class="form-group">
+    <%= f.label :menu_name %>
+
+    <!-- Input for menu_name start -->
+    <%= f.text_field :menu_name, class: "form-control" %>
+    <!-- Input for menu_name end -->
+  </div>
+  <!-- Label and input for menu_name end -->
+
+  <!-- Label and input for menu_creator start -->
+  <!-- Input for menu_creator start -->
+  <%= f.hidden_field :menu_creator, value: @business_account.id %>
+  <!-- Input for menu_creator end -->
+  <!-- Label and input for menu_creator end -->
+
+  <!-- Label and input for menu_description start -->
+  <div class="form-group">
+    <%= f.label :menu_description %>
+
+    <!-- Input for menu_description start -->
+    <%= f.text_field :menu_description, class: "form-control" %>
+    <!-- Input for menu_description end -->
+  </div>
+  <!-- Label and input for menu_description end -->
+
+  <%= f.submit "Create menu", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

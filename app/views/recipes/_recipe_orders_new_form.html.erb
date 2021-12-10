@@ -1,0 +1,21 @@
+<!-- Form order start -->
+<%= form_with(model: @order, local: true) do |f| %>
+<!-- Form order end -->
+
+  <!-- Label and input for recipe_id start -->
+  <!-- Input for recipe_id start -->
+  <%= f.hidden_field :recipe_id, value: @recipe.id %>
+  <!-- Input for recipe_id end -->
+  <!-- Label and input for recipe_id end -->
+
+  <!-- Label and input for customer_comments start -->
+  <div class="form-group">
+    <%= f.label :customer_comments %>
+    <!-- Input for customer_comments start -->
+    <%= f.text_area :customer_comments, rows: "3", class: "form-control" %>
+    <!-- Input for customer_comments end -->
+  </div>
+  <!-- Label and input for customer_comments end -->
+
+  <%= f.submit "Create order", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

@@ -24,7 +24,12 @@ class RecipeMenuJoinsController < ApplicationController
     @recipe_menu_join = RecipeMenuJoin.new(recipe_menu_join_params)
 
     if @recipe_menu_join.save
-      redirect_to @recipe_menu_join, notice: 'Recipe menu join was successfully created.'
+      message = 'RecipeMenuJoin was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @recipe_menu_join, notice: message
+      end
     else
       render :new
     end

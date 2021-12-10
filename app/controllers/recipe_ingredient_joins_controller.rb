@@ -24,7 +24,12 @@ class RecipeIngredientJoinsController < ApplicationController
     @recipe_ingredient_join = RecipeIngredientJoin.new(recipe_ingredient_join_params)
 
     if @recipe_ingredient_join.save
-      redirect_to @recipe_ingredient_join, notice: 'Recipe ingredient join was successfully created.'
+      message = 'RecipeIngredientJoin was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @recipe_ingredient_join, notice: message
+      end
     else
       render :new
     end
