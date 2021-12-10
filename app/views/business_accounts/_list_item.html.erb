@@ -1,0 +1,12 @@
+<%= link_to business_account, class: "list-group-item list-group-item-action d-flex align-items-center justify-content-between" do %>
+  <div>
+    <%= business_account %>
+    <small class="text-muted">
+      <%= time_ago_in_words(business_account.updated_at) %> ago
+    </small>
+  </div>
+
+  <span class="btn btn-sm btn-outline-secondary">
+    <i class="fas fa-chevron-right fa-fw"></i>
+  </span>
+<% end %>

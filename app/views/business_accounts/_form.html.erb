@@ -1,0 +1,31 @@
+<% was_validated = business_account.errors.any? %>
+
+<%= form_with(model: business_account, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for business_name start -->
+  <div class="form-group">
+    <% business_name_class = "form-control" %>
+    <% business_name_was_invalid = business_account.errors.include?(:business_name) %>
+
+    <% if was_validated %>
+      <% if business_name_was_invalid %>
+        <% business_name_class << " is-invalid" %>
+      <% else %>
+        <% business_name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :business_name %>
+    <!-- Input for business_name start -->
+    <%= f.text_field :business_name, class: business_name_class, placeholder: "Enter business name" %>
+    <!-- Input for business_name end -->
+    <% if business_name_was_invalid %>
+      <% business_account.errors.full_messages_for(:business_name).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for business_name end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

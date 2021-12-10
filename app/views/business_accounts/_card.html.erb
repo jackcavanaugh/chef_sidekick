@@ -1,0 +1,41 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Business Account #<%= business_account.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Business name</dt>
+      <!-- Display business_name start -->
+      <dd><%= business_account.business_name %></dd>
+      <!-- Display business_name end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back business_account, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link business_account start -->
+      <div class="col">
+        <%= link_to edit_business_account_url(business_account), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link business_account end -->
+
+      <!-- Delete link business_account start -->
+      <div class="col">
+        <%= link_to business_account, method: :delete, data: { confirm: "Do you really want to delete this business_account?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link business_account end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(business_account.updated_at) %> ago
+  </div>
+</div>
