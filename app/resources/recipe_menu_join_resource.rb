@@ -7,6 +7,8 @@ class RecipeMenuJoinResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :recipe
+
   # Indirect associations
 
 end

@@ -8,6 +8,8 @@ class RecipeResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :recipe_menu_joins
+
   has_many   :recipe_ingredient_joins
 
   belongs_to :chef,
