@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :ingredients
   resources :ingredient_suppliers
   resources :recipes
   devise_for :business_accounts

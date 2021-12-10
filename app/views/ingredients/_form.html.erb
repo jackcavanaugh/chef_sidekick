@@ -1,0 +1,57 @@
+<% was_validated = ingredient.errors.any? %>
+
+<%= form_with(model: ingredient, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for ingredient_name start -->
+  <div class="form-group">
+    <% ingredient_name_class = "form-control" %>
+    <% ingredient_name_was_invalid = ingredient.errors.include?(:ingredient_name) %>
+
+    <% if was_validated %>
+      <% if ingredient_name_was_invalid %>
+        <% ingredient_name_class << " is-invalid" %>
+      <% else %>
+        <% ingredient_name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :ingredient_name %>
+    <!-- Input for ingredient_name start -->
+    <%= f.text_field :ingredient_name, class: ingredient_name_class, placeholder: "Enter ingredient name" %>
+    <!-- Input for ingredient_name end -->
+    <% if ingredient_name_was_invalid %>
+      <% ingredient.errors.full_messages_for(:ingredient_name).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for ingredient_name end -->
+  <!-- Label and input for ingredient_description start -->
+  <div class="form-group">
+    <% ingredient_description_class = "form-control" %>
+    <% ingredient_description_was_invalid = ingredient.errors.include?(:ingredient_description) %>
+
+    <% if was_validated %>
+      <% if ingredient_description_was_invalid %>
+        <% ingredient_description_class << " is-invalid" %>
+      <% else %>
+        <% ingredient_description_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :ingredient_description %>
+    <!-- Input for ingredient_description start -->
+    <%= f.text_field :ingredient_description, class: ingredient_description_class, placeholder: "Enter ingredient description" %>
+    <!-- Input for ingredient_description end -->
+    <% if ingredient_description_was_invalid %>
+      <% ingredient.errors.full_messages_for(:ingredient_description).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for ingredient_description end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
