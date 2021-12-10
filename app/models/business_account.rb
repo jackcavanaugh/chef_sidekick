@@ -1,6 +1,10 @@
 class BusinessAccount < ApplicationRecord
   # Direct associations
 
+  has_many   :supplier_reviews,
+             :foreign_key => "reviewer",
+             :dependent => :destroy
+
   has_many   :recipes,
              :foreign_key => "business_id",
              :dependent => :destroy
