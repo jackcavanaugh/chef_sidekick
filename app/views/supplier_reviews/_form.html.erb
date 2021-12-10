@@ -1,0 +1,135 @@
+<% was_validated = supplier_review.errors.any? %>
+
+<%= form_with(model: supplier_review, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for reviewer start -->
+  <div class="form-group">
+    <% reviewer_class = "form-control" %>
+    <% reviewer_was_invalid = supplier_review.errors.include?(:reviewer) %>
+
+    <% if was_validated %>
+      <% if reviewer_was_invalid %>
+        <% reviewer_class << " is-invalid" %>
+      <% else %>
+        <% reviewer_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :reviewer %>
+    <!-- Input for reviewer start -->
+    <%= f.number_field :reviewer, class: reviewer_class, placeholder: "Enter reviewer" %>
+    <!-- Input for reviewer end -->
+    <% if reviewer_was_invalid %>
+      <% supplier_review.errors.full_messages_for(:reviewer).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for reviewer end -->
+  <!-- Label and input for supplier_id start -->
+  <div class="form-group">
+    <% supplier_class = "form-control" %>
+    <% supplier_was_invalid = supplier_review.errors.include?(:supplier) %>
+
+    <% if was_validated %>
+      <% if supplier_was_invalid %>
+        <% supplier_class << " is-invalid" %>
+      <% else %>
+        <% supplier_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :supplier_id %>
+    <!-- Input for supplier_id start -->
+    <%= f.number_field :supplier_id, class: supplier_class, placeholder: "Enter supplier" %>
+    <!-- Input for supplier_id end -->
+    <% if supplier_was_invalid %>
+      <% supplier_review.errors.full_messages_for(:supplier).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for supplier_id end -->
+  <!-- Label and input for review_title start -->
+  <div class="form-group">
+    <% review_title_class = "form-control" %>
+    <% review_title_was_invalid = supplier_review.errors.include?(:review_title) %>
+
+    <% if was_validated %>
+      <% if review_title_was_invalid %>
+        <% review_title_class << " is-invalid" %>
+      <% else %>
+        <% review_title_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :review_title %>
+    <!-- Input for review_title start -->
+    <%= f.text_field :review_title, class: review_title_class, placeholder: "Enter review title" %>
+    <!-- Input for review_title end -->
+    <% if review_title_was_invalid %>
+      <% supplier_review.errors.full_messages_for(:review_title).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for review_title end -->
+  <!-- Label and input for review_rating start -->
+  <div class="form-group">
+    <% review_rating_class = "form-control" %>
+    <% review_rating_was_invalid = supplier_review.errors.include?(:review_rating) %>
+
+    <% if was_validated %>
+      <% if review_rating_was_invalid %>
+        <% review_rating_class << " is-invalid" %>
+      <% else %>
+        <% review_rating_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :review_rating %>
+    <!-- Input for review_rating start -->
+    <%= f.number_field :review_rating, class: review_rating_class, placeholder: "Enter review rating" %>
+    <!-- Input for review_rating end -->
+    <% if review_rating_was_invalid %>
+      <% supplier_review.errors.full_messages_for(:review_rating).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for review_rating end -->
+  <!-- Label and input for review_content start -->
+  <div class="form-group">
+    <% review_content_class = "form-control" %>
+    <% review_content_was_invalid = supplier_review.errors.include?(:review_content) %>
+
+    <% if was_validated %>
+      <% if review_content_was_invalid %>
+        <% review_content_class << " is-invalid" %>
+      <% else %>
+        <% review_content_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :review_content %>
+    <!-- Input for review_content start -->
+    <%= f.text_area :review_content, class: review_content_class, placeholder: "Enter review content" %>
+    <!-- Input for review_content end -->
+    <% if review_content_was_invalid %>
+      <% supplier_review.errors.full_messages_for(:review_content).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for review_content end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

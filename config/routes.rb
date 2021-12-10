@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :supplier_reviews
   resources :ingredients
   resources :ingredient_suppliers
   resources :recipes
