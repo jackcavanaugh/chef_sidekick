@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_business_account!
+
+  
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
