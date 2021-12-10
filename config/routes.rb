@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   root :to => "recipes#index"
   resources :recipe_menu_joins
   resources :ingredient_supplier_joins
