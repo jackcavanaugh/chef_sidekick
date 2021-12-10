@@ -1,6 +1,10 @@
 class IngredientReview < ApplicationRecord
   # Direct associations
 
+  belongs_to :ingredient_reviewers,
+             :class_name => "BusinessAccount",
+             :foreign_key => "ingredient_reviewer"
+
   # Indirect associations
 
   # Validations

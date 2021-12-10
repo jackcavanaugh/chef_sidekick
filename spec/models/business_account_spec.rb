@@ -4,6 +4,8 @@ RSpec.describe BusinessAccount, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:ingredient_reviews) }
+
     it { should have_many(:supplier_reviews) }
 
     it { should have_many(:recipes) }
