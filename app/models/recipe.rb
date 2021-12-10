@@ -1,6 +1,9 @@
 class Recipe < ApplicationRecord
   # Direct associations
 
+  has_many   :recipe_ingredient_joins,
+             :dependent => :destroy
+
   belongs_to :chef,
              :class_name => "BusinessAccount",
              :foreign_key => "business_id",

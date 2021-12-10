@@ -4,6 +4,8 @@ RSpec.describe Recipe, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:recipe_ingredient_joins) }
+
     it { should belong_to(:chef) }
 
     end
