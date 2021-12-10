@@ -3,7 +3,7 @@ class BusinessAccountsController < ApplicationController
 
   # GET /business_accounts
   def index
-    @business_accounts = BusinessAccount.all
+    @business_accounts = BusinessAccount.page(params[:page]).per(10)
   end
 
   # GET /business_accounts/1

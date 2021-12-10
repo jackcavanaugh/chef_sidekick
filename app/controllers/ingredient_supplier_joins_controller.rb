@@ -3,7 +3,7 @@ class IngredientSupplierJoinsController < ApplicationController
 
   # GET /ingredient_supplier_joins
   def index
-    @ingredient_supplier_joins = IngredientSupplierJoin.all
+    @ingredient_supplier_joins = IngredientSupplierJoin.page(params[:page]).per(10)
   end
 
   # GET /ingredient_supplier_joins/1
