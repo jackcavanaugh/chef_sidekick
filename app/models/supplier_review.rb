@@ -1,6 +1,9 @@
 class SupplierReview < ApplicationRecord
   # Direct associations
 
+  belongs_to :supplier,
+             :class_name => "IngredientSupplier"
+
   belongs_to :chef_reviewer,
              :class_name => "BusinessAccount",
              :foreign_key => "reviewer"
