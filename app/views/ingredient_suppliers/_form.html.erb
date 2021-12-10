@@ -1,0 +1,83 @@
+<% was_validated = ingredient_supplier.errors.any? %>
+
+<%= form_with(model: ingredient_supplier, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for supplier_name start -->
+  <div class="form-group">
+    <% supplier_name_class = "form-control" %>
+    <% supplier_name_was_invalid = ingredient_supplier.errors.include?(:supplier_name) %>
+
+    <% if was_validated %>
+      <% if supplier_name_was_invalid %>
+        <% supplier_name_class << " is-invalid" %>
+      <% else %>
+        <% supplier_name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :supplier_name %>
+    <!-- Input for supplier_name start -->
+    <%= f.text_field :supplier_name, class: supplier_name_class, placeholder: "Enter supplier name" %>
+    <!-- Input for supplier_name end -->
+    <% if supplier_name_was_invalid %>
+      <% ingredient_supplier.errors.full_messages_for(:supplier_name).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for supplier_name end -->
+  <!-- Label and input for supplier_description start -->
+  <div class="form-group">
+    <% supplier_description_class = "form-control" %>
+    <% supplier_description_was_invalid = ingredient_supplier.errors.include?(:supplier_description) %>
+
+    <% if was_validated %>
+      <% if supplier_description_was_invalid %>
+        <% supplier_description_class << " is-invalid" %>
+      <% else %>
+        <% supplier_description_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :supplier_description %>
+    <!-- Input for supplier_description start -->
+    <%= f.text_area :supplier_description, class: supplier_description_class, placeholder: "Enter supplier description" %>
+    <!-- Input for supplier_description end -->
+    <% if supplier_description_was_invalid %>
+      <% ingredient_supplier.errors.full_messages_for(:supplier_description).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for supplier_description end -->
+  <!-- Label and input for supplier_location start -->
+  <div class="form-group">
+    <% supplier_location_class = "form-control" %>
+    <% supplier_location_was_invalid = ingredient_supplier.errors.include?(:supplier_location) %>
+
+    <% if was_validated %>
+      <% if supplier_location_was_invalid %>
+        <% supplier_location_class << " is-invalid" %>
+      <% else %>
+        <% supplier_location_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :supplier_location %>
+    <!-- Input for supplier_location start -->
+    <%= f.text_field :supplier_location, class: supplier_location_class, placeholder: "Enter supplier location" %>
+    <!-- Input for supplier_location end -->
+    <% if supplier_location_was_invalid %>
+      <% ingredient_supplier.errors.full_messages_for(:supplier_location).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for supplier_location end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
