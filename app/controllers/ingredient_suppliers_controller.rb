@@ -3,7 +3,8 @@ class IngredientSuppliersController < ApplicationController
 
   # GET /ingredient_suppliers
   def index
-    @ingredient_suppliers = IngredientSupplier.page(params[:page]).per(10)
+    @q = IngredientSupplier.ransack(params[:q])
+    @ingredient_suppliers = @q.result(:distinct => true).includes(:ingredient_supplier_joins, :supplier_reviews).page(params[:page]).per(10)
   end
 
   # GET /ingredient_suppliers/1

@@ -5,7 +5,8 @@ class MenusController < ApplicationController
 
   # GET /menus
   def index
-    @menus = current_business_account.menus.page(params[:page]).per(10)
+    @q = current_business_account.menus.ransack(params[:q])
+    @menus = @q.result(:distinct => true).includes(:menu_creators, :recipe_menu_joins).page(params[:page]).per(10)
   end
 
   # GET /menus/1

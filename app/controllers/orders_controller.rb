@@ -3,7 +3,8 @@ class OrdersController < ApplicationController
 
   # GET /orders
   def index
-    @orders = Order.page(params[:page]).per(10)
+    @q = Order.ransack(params[:q])
+    @orders = @q.result(:distinct => true).includes(:recipe).page(params[:page]).per(10)
   end
 
   # GET /orders/1

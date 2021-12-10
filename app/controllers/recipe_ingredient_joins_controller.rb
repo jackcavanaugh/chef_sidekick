@@ -3,7 +3,8 @@ class RecipeIngredientJoinsController < ApplicationController
 
   # GET /recipe_ingredient_joins
   def index
-    @recipe_ingredient_joins = RecipeIngredientJoin.page(params[:page]).per(10)
+    @q = RecipeIngredientJoin.ransack(params[:q])
+    @recipe_ingredient_joins = @q.result(:distinct => true).includes(:recipe, :ingredient).page(params[:page]).per(10)
   end
 
   # GET /recipe_ingredient_joins/1

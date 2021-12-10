@@ -5,7 +5,8 @@ class RecipesController < ApplicationController
 
   # GET /recipes
   def index
-    @recipes = current_business_account.recipes.page(params[:page]).per(10)
+    @q = current_business_account.recipes.ransack(params[:q])
+    @recipes = @q.result(:distinct => true).includes(:chef, :recipe_ingredient_joins, :recipe_menu_joins, :orders).page(params[:page]).per(10)
   end
 
   # GET /recipes/1
