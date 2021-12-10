@@ -42,7 +42,7 @@
 
     <%= f.label :ingredient_supplier_join_id %>
     <!-- Input for ingredient_supplier_join_id start -->
-    <%= f.number_field :ingredient_supplier_join_id, class: ingredient_supplier_join_class, placeholder: "Enter ingredient supplier join" %>
+    <%= f.collection_select :ingredient_supplier_join_id, IngredientSupplierJoin.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for ingredient_supplier_join_id end -->
     <% if ingredient_supplier_join_was_invalid %>
       <% ingredient_review.errors.full_messages_for(:ingredient_supplier_join).each do |message| %>

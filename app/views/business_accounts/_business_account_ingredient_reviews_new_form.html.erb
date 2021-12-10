@@ -13,7 +13,7 @@
     <%= f.label :ingredient_supplier_join_id %>
 
     <!-- Input for ingredient_supplier_join_id start -->
-    <%= f.text_field :ingredient_supplier_join_id, class: "form-control" %>
+    <%= f.collection_select :ingredient_supplier_join_id, IngredientSupplierJoin.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for ingredient_supplier_join_id end -->
   </div>
   <!-- Label and input for ingredient_supplier_join_id end -->
