@@ -1,5 +1,7 @@
 ActiveAdmin.register IngredientSupplierJoin do
 
+ permit_params :ingredient_id, :supplier_id, :preferred_supplier, :ingredient_cost, :average_lead_time_in_days, :ingredient_inventory
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
