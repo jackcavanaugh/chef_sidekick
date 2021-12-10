@@ -1,24 +1,19 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[show edit update destroy]
 
-  # GET /orders
   def index
     @q = Order.ransack(params[:q])
     @orders = @q.result(distinct: true).includes(:recipe).page(params[:page]).per(10)
   end
 
-  # GET /orders/1
   def show; end
 
-  # GET /orders/new
   def new
     @order = Order.new
   end
 
-  # GET /orders/1/edit
   def edit; end
 
-  # POST /orders
   def create
     @order = Order.new(order_params)
 
@@ -34,7 +29,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /orders/1
   def update
     if @order.update(order_params)
       redirect_to @order, notice: "Order was successfully updated."
@@ -43,7 +37,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  # DELETE /orders/1
   def destroy
     @order.destroy
     message = "Order was successfully deleted."
@@ -56,12 +49,10 @@ class OrdersController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_order
     @order = Order.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def order_params
     params.require(:order).permit(:recipe_id, :customer_comments)
   end

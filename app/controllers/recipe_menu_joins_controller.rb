@@ -1,25 +1,20 @@
 class RecipeMenuJoinsController < ApplicationController
   before_action :set_recipe_menu_join, only: %i[show edit update destroy]
 
-  # GET /recipe_menu_joins
   def index
     @q = RecipeMenuJoin.ransack(params[:q])
     @recipe_menu_joins = @q.result(distinct: true).includes(:recipe,
                                                             :menu).page(params[:page]).per(10)
   end
 
-  # GET /recipe_menu_joins/1
   def show; end
 
-  # GET /recipe_menu_joins/new
   def new
     @recipe_menu_join = RecipeMenuJoin.new
   end
 
-  # GET /recipe_menu_joins/1/edit
   def edit; end
 
-  # POST /recipe_menu_joins
   def create
     @recipe_menu_join = RecipeMenuJoin.new(recipe_menu_join_params)
 
@@ -35,7 +30,6 @@ class RecipeMenuJoinsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /recipe_menu_joins/1
   def update
     if @recipe_menu_join.update(recipe_menu_join_params)
       redirect_to @recipe_menu_join,
@@ -45,7 +39,6 @@ class RecipeMenuJoinsController < ApplicationController
     end
   end
 
-  # DELETE /recipe_menu_joins/1
   def destroy
     @recipe_menu_join.destroy
     message = "RecipeMenuJoin was successfully deleted."
@@ -58,12 +51,10 @@ class RecipeMenuJoinsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_recipe_menu_join
     @recipe_menu_join = RecipeMenuJoin.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def recipe_menu_join_params
     params.require(:recipe_menu_join).permit(:menu_id, :recipe_id)
   end

@@ -4,27 +4,22 @@ class MenusController < ApplicationController
 
   before_action :set_menu, only: %i[show edit update destroy]
 
-  # GET /menus
   def index
     @q = current_business_account.menus.ransack(params[:q])
     @menus = @q.result(distinct: true).includes(:menu_creators,
                                                 :recipe_menu_joins).page(params[:page]).per(10)
   end
 
-  # GET /menus/1
   def show
     @recipe_menu_join = RecipeMenuJoin.new
   end
 
-  # GET /menus/new
   def new
     @menu = Menu.new
   end
 
-  # GET /menus/1/edit
   def edit; end
 
-  # POST /menus
   def create
     @menu = Menu.new(menu_params)
 
@@ -40,7 +35,6 @@ class MenusController < ApplicationController
     end
   end
 
-  # PATCH/PUT /menus/1
   def update
     if @menu.update(menu_params)
       redirect_to @menu, notice: "Menu was successfully updated."
@@ -49,7 +43,6 @@ class MenusController < ApplicationController
     end
   end
 
-  # DELETE /menus/1
   def destroy
     @menu.destroy
     message = "Menu was successfully deleted."
@@ -70,12 +63,10 @@ class MenusController < ApplicationController
     end
   end
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_menu
     @menu = Menu.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def menu_params
     params.require(:menu).permit(:menu_name, :menu_creator, :menu_description)
   end
