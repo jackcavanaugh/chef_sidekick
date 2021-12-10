@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  before_action :current_business_account_must_be_recipe_chef, only: [:edit, :update, :destroy] 
+
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   # GET /recipes
@@ -60,6 +62,14 @@ class RecipesController < ApplicationController
 
 
   private
+
+  def current_business_account_must_be_recipe_chef
+    set_recipe
+    unless current_business_account == @recipe.chef
+      redirect_back fallback_location: root_path, alert: "You are not authorized for that."
+    end
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe
       @recipe = Recipe.find(params[:id])
