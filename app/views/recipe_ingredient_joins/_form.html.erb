@@ -1,0 +1,57 @@
+<% was_validated = recipe_ingredient_join.errors.any? %>
+
+<%= form_with(model: recipe_ingredient_join, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for recipe_id start -->
+  <div class="form-group">
+    <% recipe_class = "form-control" %>
+    <% recipe_was_invalid = recipe_ingredient_join.errors.include?(:recipe) %>
+
+    <% if was_validated %>
+      <% if recipe_was_invalid %>
+        <% recipe_class << " is-invalid" %>
+      <% else %>
+        <% recipe_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :recipe_id %>
+    <!-- Input for recipe_id start -->
+    <%= f.number_field :recipe_id, class: recipe_class, placeholder: "Enter recipe" %>
+    <!-- Input for recipe_id end -->
+    <% if recipe_was_invalid %>
+      <% recipe_ingredient_join.errors.full_messages_for(:recipe).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for recipe_id end -->
+  <!-- Label and input for ingredient_id start -->
+  <div class="form-group">
+    <% ingredient_class = "form-control" %>
+    <% ingredient_was_invalid = recipe_ingredient_join.errors.include?(:ingredient) %>
+
+    <% if was_validated %>
+      <% if ingredient_was_invalid %>
+        <% ingredient_class << " is-invalid" %>
+      <% else %>
+        <% ingredient_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :ingredient_id %>
+    <!-- Input for ingredient_id start -->
+    <%= f.number_field :ingredient_id, class: ingredient_class, placeholder: "Enter ingredient" %>
+    <!-- Input for ingredient_id end -->
+    <% if ingredient_was_invalid %>
+      <% recipe_ingredient_join.errors.full_messages_for(:ingredient).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for ingredient_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
