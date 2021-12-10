@@ -16,7 +16,7 @@
 
     <%= f.label :menu_id %>
     <!-- Input for menu_id start -->
-    <%= f.number_field :menu_id, class: menu_class, placeholder: "Enter menu" %>
+    <%= f.collection_select :menu_id, Menu.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for menu_id end -->
     <% if menu_was_invalid %>
       <% recipe_menu_join.errors.full_messages_for(:menu).each do |message| %>
