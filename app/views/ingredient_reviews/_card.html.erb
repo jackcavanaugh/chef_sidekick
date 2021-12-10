@@ -6,32 +6,24 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Ingredient reviewer</dt>
-      <!-- Display ingredient_reviewer start -->
       <dd>
         <% if @ingredient_review.ingredient_reviewers.present? %>
           <%= link_to ingredient_review.ingredient_reviewers, ingredient_review.ingredient_reviewers %>
         <% end %>
       </dd>
-      <!-- Display ingredient_reviewer end -->
 
       <dt>Ingredient supplier join</dt>
-      <!-- Display ingredient_supplier_join_id start -->
       <dd>
         <% if @ingredient_review.ingredient_supplier_join.present? %>
           <%= link_to ingredient_review.ingredient_supplier_join, ingredient_review.ingredient_supplier_join %>
         <% end %>
       </dd>
-      <!-- Display ingredient_supplier_join_id end -->
 
       <dt>Ingredient supplier rating</dt>
-      <!-- Display ingredient_supplier_rating start -->
       <dd><%= ingredient_review.ingredient_supplier_rating %></dd>
-      <!-- Display ingredient_supplier_rating end -->
 
       <dt>Ingredient supplier review description</dt>
-      <!-- Display ingredient_supplier_review_description start -->
       <dd><%= ingredient_review.ingredient_supplier_review_description %></dd>
-      <!-- Display ingredient_supplier_review_description end -->
 
     </dl>
 
@@ -40,21 +32,17 @@
         <%= link_to_show_or_back ingredient_review, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link ingredient_review start -->
       <div class="col">
         <%= link_to edit_ingredient_review_url(ingredient_review), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link ingredient_review end -->
 
-      <!-- Delete link ingredient_review start -->
       <div class="col">
         <%= link_to ingredient_review, method: :delete, data: { confirm: "Do you really want to delete this ingredient_review?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link ingredient_review end -->
     </div>
   </div>
 

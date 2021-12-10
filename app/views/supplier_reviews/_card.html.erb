@@ -6,37 +6,27 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Reviewer</dt>
-      <!-- Display reviewer start -->
       <dd>
         <% if @supplier_review.chef_reviewer.present? %>
           <%= link_to supplier_review.chef_reviewer, supplier_review.chef_reviewer %>
         <% end %>
       </dd>
-      <!-- Display reviewer end -->
 
       <dt>Supplier</dt>
-      <!-- Display supplier_id start -->
       <dd>
         <% if @supplier_review.supplier.present? %>
           <%= link_to supplier_review.supplier, supplier_review.supplier %>
         <% end %>
       </dd>
-      <!-- Display supplier_id end -->
 
       <dt>Review title</dt>
-      <!-- Display review_title start -->
       <dd><%= supplier_review.review_title %></dd>
-      <!-- Display review_title end -->
 
       <dt>Review rating</dt>
-      <!-- Display review_rating start -->
       <dd><%= supplier_review.review_rating %></dd>
-      <!-- Display review_rating end -->
 
       <dt>Review content</dt>
-      <!-- Display review_content start -->
       <dd><%= supplier_review.review_content %></dd>
-      <!-- Display review_content end -->
 
     </dl>
 
@@ -45,21 +35,17 @@
         <%= link_to_show_or_back supplier_review, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link supplier_review start -->
       <div class="col">
         <%= link_to edit_supplier_review_url(supplier_review), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link supplier_review end -->
 
-      <!-- Delete link supplier_review start -->
       <div class="col">
         <%= link_to supplier_review, method: :delete, data: { confirm: "Do you really want to delete this supplier_review?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link supplier_review end -->
     </div>
   </div>
 

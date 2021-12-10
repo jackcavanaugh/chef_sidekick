@@ -6,23 +6,17 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Menu name</dt>
-      <!-- Display menu_name start -->
       <dd><%= menu.menu_name %></dd>
-      <!-- Display menu_name end -->
 
       <dt>Menu creator</dt>
-      <!-- Display menu_creator start -->
       <dd>
         <% if @menu.menu_creators.present? %>
           <%= link_to menu.menu_creators, menu.menu_creators %>
         <% end %>
       </dd>
-      <!-- Display menu_creator end -->
 
       <dt>Menu description</dt>
-      <!-- Display menu_description start -->
       <dd><%= menu.menu_description %></dd>
-      <!-- Display menu_description end -->
 
     </dl>
 
@@ -31,7 +25,6 @@
         <%= link_to_show_or_back menu, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link menu start -->
       <div class="col">
         <% if current_business_account == @menu.menu_creators %>
           <%= link_to edit_menu_url(menu), class: "btn btn-block btn-sm btn-outline-secondary" do %>
@@ -39,9 +32,7 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Edit link menu end -->
 
-      <!-- Delete link menu start -->
       <div class="col">
         <% if current_business_account == @menu.menu_creators %>
           <%= link_to menu, method: :delete, data: { confirm: "Do you really want to delete this menu?" }, class: "btn btn-block btn-outline-secondary" do %>
@@ -49,7 +40,6 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Delete link menu end -->
     </div>
   </div>
 

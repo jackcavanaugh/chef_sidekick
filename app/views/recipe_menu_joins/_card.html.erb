@@ -6,22 +6,18 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Menu</dt>
-      <!-- Display menu_id start -->
       <dd>
         <% if @recipe_menu_join.menu.present? %>
           <%= link_to recipe_menu_join.menu, recipe_menu_join.menu %>
         <% end %>
       </dd>
-      <!-- Display menu_id end -->
 
       <dt>Recipe</dt>
-      <!-- Display recipe_id start -->
       <dd>
         <% if @recipe_menu_join.recipe.present? %>
           <%= link_to recipe_menu_join.recipe, recipe_menu_join.recipe %>
         <% end %>
       </dd>
-      <!-- Display recipe_id end -->
 
     </dl>
 
@@ -30,21 +26,17 @@
         <%= link_to_show_or_back recipe_menu_join, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link recipe_menu_join start -->
       <div class="col">
         <%= link_to edit_recipe_menu_join_url(recipe_menu_join), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link recipe_menu_join end -->
 
-      <!-- Delete link recipe_menu_join start -->
       <div class="col">
         <%= link_to recipe_menu_join, method: :delete, data: { confirm: "Do you really want to delete this recipe_menu_join?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link recipe_menu_join end -->
     </div>
   </div>
 

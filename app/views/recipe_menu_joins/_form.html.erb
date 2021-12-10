@@ -1,7 +1,6 @@
 <% was_validated = recipe_menu_join.errors.any? %>
 
 <%= form_with(model: recipe_menu_join, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for menu_id start -->
   <div class="form-group">
     <% menu_class = "form-control" %>
     <% menu_was_invalid = recipe_menu_join.errors.include?(:menu) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :menu_id %>
-    <!-- Input for menu_id start -->
     <%= f.collection_select :menu_id, Menu.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for menu_id end -->
     <% if menu_was_invalid %>
       <% recipe_menu_join.errors.full_messages_for(:menu).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for menu_id end -->
-  <!-- Label and input for recipe_id start -->
   <div class="form-group">
     <% recipe_class = "form-control" %>
     <% recipe_was_invalid = recipe_menu_join.errors.include?(:recipe) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :recipe_id %>
-    <!-- Input for recipe_id start -->
     <%= f.collection_select :recipe_id, Recipe.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for recipe_id end -->
     <% if recipe_was_invalid %>
       <% recipe_menu_join.errors.full_messages_for(:recipe).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,6 +45,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for recipe_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

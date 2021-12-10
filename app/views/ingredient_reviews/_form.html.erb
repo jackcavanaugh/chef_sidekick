@@ -1,7 +1,6 @@
 <% was_validated = ingredient_review.errors.any? %>
 
 <%= form_with(model: ingredient_review, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for ingredient_reviewer start -->
   <div class="form-group">
     <% ingredient_reviewer_class = "form-control" %>
     <% ingredient_reviewer_was_invalid = ingredient_review.errors.include?(:ingredient_reviewer) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :ingredient_reviewer %>
-    <!-- Input for ingredient_reviewer start -->
     <%= f.collection_select :ingredient_reviewer, BusinessAccount.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for ingredient_reviewer end -->
     <% if ingredient_reviewer_was_invalid %>
       <% ingredient_review.errors.full_messages_for(:ingredient_reviewer).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for ingredient_reviewer end -->
-  <!-- Label and input for ingredient_supplier_join_id start -->
   <div class="form-group">
     <% ingredient_supplier_join_class = "form-control" %>
     <% ingredient_supplier_join_was_invalid = ingredient_review.errors.include?(:ingredient_supplier_join) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :ingredient_supplier_join_id %>
-    <!-- Input for ingredient_supplier_join_id start -->
     <%= f.collection_select :ingredient_supplier_join_id, IngredientSupplierJoin.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for ingredient_supplier_join_id end -->
     <% if ingredient_supplier_join_was_invalid %>
       <% ingredient_review.errors.full_messages_for(:ingredient_supplier_join).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for ingredient_supplier_join_id end -->
-  <!-- Label and input for ingredient_supplier_rating start -->
   <div class="form-group">
     <% ingredient_supplier_rating_class = "form-control" %>
     <% ingredient_supplier_rating_was_invalid = ingredient_review.errors.include?(:ingredient_supplier_rating) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :ingredient_supplier_rating %>
-    <!-- Input for ingredient_supplier_rating start -->
     <%= f.number_field :ingredient_supplier_rating, class: ingredient_supplier_rating_class, placeholder: "Enter ingredient supplier rating" %>
-    <!-- Input for ingredient_supplier_rating end -->
     <% if ingredient_supplier_rating_was_invalid %>
       <% ingredient_review.errors.full_messages_for(:ingredient_supplier_rating).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,8 +67,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for ingredient_supplier_rating end -->
-  <!-- Label and input for ingredient_supplier_review_description start -->
   <div class="form-group">
     <% ingredient_supplier_review_description_class = "form-control" %>
     <% ingredient_supplier_review_description_was_invalid = ingredient_review.errors.include?(:ingredient_supplier_review_description) %>
@@ -93,9 +80,7 @@
     <% end %>
 
     <%= f.label :ingredient_supplier_review_description %>
-    <!-- Input for ingredient_supplier_review_description start -->
     <%= f.text_area :ingredient_supplier_review_description, class: ingredient_supplier_review_description_class, placeholder: "Enter ingredient supplier review description" %>
-    <!-- Input for ingredient_supplier_review_description end -->
     <% if ingredient_supplier_review_description_was_invalid %>
       <% ingredient_review.errors.full_messages_for(:ingredient_supplier_review_description).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -104,6 +89,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for ingredient_supplier_review_description end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

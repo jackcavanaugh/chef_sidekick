@@ -1,7 +1,6 @@
 <% was_validated = ingredient_supplier_join.errors.any? %>
 
 <%= form_with(model: ingredient_supplier_join, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for ingredient_id start -->
   <div class="form-group">
     <% ingredient_class = "form-control" %>
     <% ingredient_was_invalid = ingredient_supplier_join.errors.include?(:ingredient) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :ingredient_id %>
-    <!-- Input for ingredient_id start -->
     <%= f.collection_select :ingredient_id, Ingredient.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for ingredient_id end -->
     <% if ingredient_was_invalid %>
       <% ingredient_supplier_join.errors.full_messages_for(:ingredient).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for ingredient_id end -->
-  <!-- Label and input for supplier_id start -->
   <div class="form-group">
     <% supplier_class = "form-control" %>
     <% supplier_was_invalid = ingredient_supplier_join.errors.include?(:supplier) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :supplier_id %>
-    <!-- Input for supplier_id start -->
     <%= f.collection_select :supplier_id, IngredientSupplier.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for supplier_id end -->
     <% if supplier_was_invalid %>
       <% ingredient_supplier_join.errors.full_messages_for(:supplier).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for supplier_id end -->
-  <!-- Label and input for preferred_supplier start -->
   <div class="form-check">
     <% preferred_supplier_class = "form-check-input" %>
     <% preferred_supplier_was_invalid = ingredient_supplier_join.errors.include?(:preferred_supplier) %>
@@ -77,8 +68,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for preferred_supplier end -->
-  <!-- Label and input for ingredient_cost start -->
   <div class="form-group">
     <% ingredient_cost_class = "form-control" %>
     <% ingredient_cost_was_invalid = ingredient_supplier_join.errors.include?(:ingredient_cost) %>
@@ -92,9 +81,7 @@
     <% end %>
 
     <%= f.label :ingredient_cost %>
-    <!-- Input for ingredient_cost start -->
     <%= f.text_field :ingredient_cost, class: ingredient_cost_class, placeholder: "Enter ingredient cost" %>
-    <!-- Input for ingredient_cost end -->
     <% if ingredient_cost_was_invalid %>
       <% ingredient_supplier_join.errors.full_messages_for(:ingredient_cost).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -103,8 +90,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for ingredient_cost end -->
-  <!-- Label and input for average_lead_time_in_days start -->
   <div class="form-group">
     <% average_lead_time_in_day_class = "form-control" %>
     <% average_lead_time_in_day_was_invalid = ingredient_supplier_join.errors.include?(:average_lead_time_in_day) %>
@@ -118,9 +103,7 @@
     <% end %>
 
     <%= f.label :average_lead_time_in_days %>
-    <!-- Input for average_lead_time_in_days start -->
     <%= f.number_field :average_lead_time_in_days, class: average_lead_time_in_day_class, placeholder: "Enter average lead time in day" %>
-    <!-- Input for average_lead_time_in_days end -->
     <% if average_lead_time_in_day_was_invalid %>
       <% ingredient_supplier_join.errors.full_messages_for(:average_lead_time_in_day).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -129,8 +112,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for average_lead_time_in_days end -->
-  <!-- Label and input for ingredient_inventory start -->
   <div class="form-group">
     <% ingredient_inventory_class = "form-control" %>
     <% ingredient_inventory_was_invalid = ingredient_supplier_join.errors.include?(:ingredient_inventory) %>
@@ -144,9 +125,7 @@
     <% end %>
 
     <%= f.label :ingredient_inventory %>
-    <!-- Input for ingredient_inventory start -->
     <%= f.number_field :ingredient_inventory, class: ingredient_inventory_class, placeholder: "Enter ingredient inventory" %>
-    <!-- Input for ingredient_inventory end -->
     <% if ingredient_inventory_was_invalid %>
       <% ingredient_supplier_join.errors.full_messages_for(:ingredient_inventory).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -155,6 +134,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for ingredient_inventory end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

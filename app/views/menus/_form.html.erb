@@ -1,7 +1,6 @@
 <% was_validated = menu.errors.any? %>
 
 <%= form_with(model: menu, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for menu_name start -->
   <div class="form-group">
     <% menu_name_class = "form-control" %>
     <% menu_name_was_invalid = menu.errors.include?(:menu_name) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :menu_name %>
-    <!-- Input for menu_name start -->
     <%= f.text_field :menu_name, class: menu_name_class, placeholder: "Enter menu name" %>
-    <!-- Input for menu_name end -->
     <% if menu_name_was_invalid %>
       <% menu.errors.full_messages_for(:menu_name).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,13 +23,7 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for menu_name end -->
-  <!-- Label and input for menu_creator start -->
-  <!-- Input for "menu_creator" start -->
   <%= f.hidden_field :menu_creator, value: current_business_account.id %>
-  <!-- Input for "menu_creator" end -->
-  <!-- Label and input for menu_creator end -->
-  <!-- Label and input for menu_description start -->
   <div class="form-group">
     <% menu_description_class = "form-control" %>
     <% menu_description_was_invalid = menu.errors.include?(:menu_description) %>
@@ -46,9 +37,7 @@
     <% end %>
 
     <%= f.label :menu_description %>
-    <!-- Input for menu_description start -->
     <%= f.text_field :menu_description, class: menu_description_class, placeholder: "Enter menu description" %>
-    <!-- Input for menu_description end -->
     <% if menu_description_was_invalid %>
       <% menu.errors.full_messages_for(:menu_description).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -57,6 +46,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for menu_description end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

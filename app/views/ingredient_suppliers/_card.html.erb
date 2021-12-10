@@ -6,19 +6,13 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Supplier name</dt>
-      <!-- Display supplier_name start -->
       <dd><%= ingredient_supplier.supplier_name %></dd>
-      <!-- Display supplier_name end -->
 
       <dt>Supplier description</dt>
-      <!-- Display supplier_description start -->
       <dd><%= ingredient_supplier.supplier_description %></dd>
-      <!-- Display supplier_description end -->
 
       <dt>Supplier location</dt>
-      <!-- Display supplier_location start -->
       <dd><%= ingredient_supplier.supplier_location %></dd>
-      <!-- Display supplier_location end -->
 
     </dl>
 
@@ -27,21 +21,17 @@
         <%= link_to_show_or_back ingredient_supplier, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link ingredient_supplier start -->
       <div class="col">
         <%= link_to edit_ingredient_supplier_url(ingredient_supplier), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link ingredient_supplier end -->
 
-      <!-- Delete link ingredient_supplier start -->
       <div class="col">
         <%= link_to ingredient_supplier, method: :delete, data: { confirm: "Do you really want to delete this ingredient_supplier?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link ingredient_supplier end -->
     </div>
   </div>
 

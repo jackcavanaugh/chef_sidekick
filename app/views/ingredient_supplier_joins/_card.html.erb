@@ -6,42 +6,30 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Ingredient</dt>
-      <!-- Display ingredient_id start -->
       <dd>
         <% if @ingredient_supplier_join.ingredient.present? %>
           <%= link_to ingredient_supplier_join.ingredient, ingredient_supplier_join.ingredient %>
         <% end %>
       </dd>
-      <!-- Display ingredient_id end -->
 
       <dt>Supplier</dt>
-      <!-- Display supplier_id start -->
       <dd>
         <% if @ingredient_supplier_join.supplier.present? %>
           <%= link_to ingredient_supplier_join.supplier, ingredient_supplier_join.supplier %>
         <% end %>
       </dd>
-      <!-- Display supplier_id end -->
 
       <dt>Preferred supplier</dt>
-      <!-- Display preferred_supplier start -->
       <dd><%= ingredient_supplier_join.preferred_supplier %></dd>
-      <!-- Display preferred_supplier end -->
 
       <dt>Ingredient cost</dt>
-      <!-- Display ingredient_cost start -->
       <dd><%= ingredient_supplier_join.ingredient_cost %></dd>
-      <!-- Display ingredient_cost end -->
 
       <dt>Average lead time in days</dt>
-      <!-- Display average_lead_time_in_days start -->
       <dd><%= ingredient_supplier_join.average_lead_time_in_days %></dd>
-      <!-- Display average_lead_time_in_days end -->
 
       <dt>Ingredient inventory</dt>
-      <!-- Display ingredient_inventory start -->
       <dd><%= ingredient_supplier_join.ingredient_inventory %></dd>
-      <!-- Display ingredient_inventory end -->
 
     </dl>
 
@@ -50,21 +38,17 @@
         <%= link_to_show_or_back ingredient_supplier_join, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link ingredient_supplier_join start -->
       <div class="col">
         <%= link_to edit_ingredient_supplier_join_url(ingredient_supplier_join), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link ingredient_supplier_join end -->
 
-      <!-- Delete link ingredient_supplier_join start -->
       <div class="col">
         <%= link_to ingredient_supplier_join, method: :delete, data: { confirm: "Do you really want to delete this ingredient_supplier_join?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link ingredient_supplier_join end -->
     </div>
   </div>
 

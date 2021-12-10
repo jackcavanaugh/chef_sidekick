@@ -1,41 +1,23 @@
-<!-- Form ingredient_review start -->
 <%= form_with(model: @ingredient_review, local: true) do |f| %>
-<!-- Form ingredient_review end -->
 
-  <!-- Label and input for ingredient_reviewer start -->
   <div class="form-group">
     <%= f.label :ingredient_reviewer %>
 
-    <!-- Input for ingredient_reviewer start -->
     <%= f.collection_select :ingredient_reviewer, BusinessAccount.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for ingredient_reviewer end -->
   </div>
-  <!-- Label and input for ingredient_reviewer end -->
 
-  <!-- Label and input for ingredient_supplier_join_id start -->
-  <!-- Input for ingredient_supplier_join_id start -->
   <%= f.hidden_field :ingredient_supplier_join_id, value: @ingredient_supplier_join.id %>
-  <!-- Input for ingredient_supplier_join_id end -->
-  <!-- Label and input for ingredient_supplier_join_id end -->
 
-  <!-- Label and input for ingredient_supplier_rating start -->
   <div class="form-group">
     <%= f.label :ingredient_supplier_rating %>
 
-    <!-- Input for ingredient_supplier_rating start -->
     <%= f.text_field :ingredient_supplier_rating, class: "form-control" %>
-    <!-- Input for ingredient_supplier_rating end -->
   </div>
-  <!-- Label and input for ingredient_supplier_rating end -->
 
-  <!-- Label and input for ingredient_supplier_review_description start -->
   <div class="form-group">
     <%= f.label :ingredient_supplier_review_description %>
-    <!-- Input for ingredient_supplier_review_description start -->
     <%= f.text_area :ingredient_supplier_review_description, rows: "3", class: "form-control" %>
-    <!-- Input for ingredient_supplier_review_description end -->
   </div>
-  <!-- Label and input for ingredient_supplier_review_description end -->
 
   <%= f.submit "Create ingredient review", class: "btn btn-block btn-outline-secondary" %>
 <% end %>
