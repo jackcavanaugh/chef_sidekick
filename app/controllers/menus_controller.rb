@@ -5,7 +5,7 @@ class MenusController < ApplicationController
 
   # GET /menus
   def index
-    @menus = Menu.all
+    @menus = current_business_account.menus.page(params[:page]).per(10)
   end
 
   # GET /menus/1
