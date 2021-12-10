@@ -1,0 +1,83 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      ChefSidekick
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-nav-links" aria-controls="collapsible-nav-links" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsible-nav-links">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Resources
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a href="/recipe_menu_joins" class="dropdown-item">
+              Recipe Menu Joins
+            </a>
+            <a href="/ingredient_supplier_joins" class="dropdown-item">
+              Ingredient Supplier Joins
+            </a>
+            <a href="/recipe_ingredient_joins" class="dropdown-item">
+              Recipe Ingredient Joins
+            </a>
+            <a href="/orders" class="dropdown-item">
+              Orders
+            </a>
+            <a href="/menus" class="dropdown-item">
+              Menus
+            </a>
+            <a href="/ingredient_reviews" class="dropdown-item">
+              Ingredient Reviews
+            </a>
+            <a href="/supplier_reviews" class="dropdown-item">
+              Supplier Reviews
+            </a>
+            <a href="/ingredients" class="dropdown-item">
+              Ingredients
+            </a>
+            <a href="/ingredient_suppliers" class="dropdown-item">
+              Ingredient Suppliers
+            </a>
+            <a href="/recipes" class="dropdown-item">
+              Recipes
+            </a>
+            <a href="/business_accounts" class="dropdown-item">
+              Business Accounts
+            </a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <% if current_business_account.blank? %>
+          <li class="nav-item">
+            <a href="/business_accounts/sign_in" class="nav-link">
+              Sign in
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/business_accounts/sign_up" class="nav-link">
+              Sign up
+            </a>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <a href="/business_accounts/edit" class="nav-link">
+              Edit profile
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/business_accounts/sign_out" data-method="delete" class="nav-link">
+              Sign out
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div> <!-- .navbar-collapse -->
+  </div> <!-- .container -->
+</nav>
