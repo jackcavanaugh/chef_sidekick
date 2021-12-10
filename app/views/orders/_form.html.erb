@@ -1,0 +1,57 @@
+<% was_validated = order.errors.any? %>
+
+<%= form_with(model: order, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for recipe_id start -->
+  <div class="form-group">
+    <% recipe_class = "form-control" %>
+    <% recipe_was_invalid = order.errors.include?(:recipe) %>
+
+    <% if was_validated %>
+      <% if recipe_was_invalid %>
+        <% recipe_class << " is-invalid" %>
+      <% else %>
+        <% recipe_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :recipe_id %>
+    <!-- Input for recipe_id start -->
+    <%= f.number_field :recipe_id, class: recipe_class, placeholder: "Enter recipe" %>
+    <!-- Input for recipe_id end -->
+    <% if recipe_was_invalid %>
+      <% order.errors.full_messages_for(:recipe).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for recipe_id end -->
+  <!-- Label and input for customer_comments start -->
+  <div class="form-group">
+    <% customer_comment_class = "form-control" %>
+    <% customer_comment_was_invalid = order.errors.include?(:customer_comment) %>
+
+    <% if was_validated %>
+      <% if customer_comment_was_invalid %>
+        <% customer_comment_class << " is-invalid" %>
+      <% else %>
+        <% customer_comment_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :customer_comments %>
+    <!-- Input for customer_comments start -->
+    <%= f.text_area :customer_comments, class: customer_comment_class, placeholder: "Enter customer comment" %>
+    <!-- Input for customer_comments end -->
+    <% if customer_comment_was_invalid %>
+      <% order.errors.full_messages_for(:customer_comment).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for customer_comments end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
