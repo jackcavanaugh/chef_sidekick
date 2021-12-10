@@ -11,6 +11,9 @@ class IngredientSupplierJoinResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :supplier,
+             resource: IngredientSupplierResource
+
   # Indirect associations
 
 end
