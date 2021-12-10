@@ -1,5 +1,7 @@
 class BusinessAccount < ApplicationRecord
-  # Direct associations
+  
+  include JwtToken
+# Direct associations
 
   has_many   :menus,
              :foreign_key => "menu_creator",
