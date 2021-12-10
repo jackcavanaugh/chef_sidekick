@@ -16,7 +16,7 @@
 
     <%= f.label :ingredient_reviewer %>
     <!-- Input for ingredient_reviewer start -->
-    <%= f.number_field :ingredient_reviewer, class: ingredient_reviewer_class, placeholder: "Enter ingredient reviewer" %>
+    <%= f.collection_select :ingredient_reviewer, BusinessAccount.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for ingredient_reviewer end -->
     <% if ingredient_reviewer_was_invalid %>
       <% ingredient_review.errors.full_messages_for(:ingredient_reviewer).each do |message| %>
