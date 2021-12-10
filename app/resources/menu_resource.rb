@@ -8,6 +8,10 @@ class MenuResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :menu_creators,
+             resource: BusinessAccountResource,
+             foreign_key: :menu_creator
+
   # Indirect associations
 
 end

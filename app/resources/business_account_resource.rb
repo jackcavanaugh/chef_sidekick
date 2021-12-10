@@ -8,6 +8,9 @@ class BusinessAccountResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :menus,
+             foreign_key: :menu_creator
+
   has_many   :ingredient_reviews,
              foreign_key: :ingredient_reviewer
 
