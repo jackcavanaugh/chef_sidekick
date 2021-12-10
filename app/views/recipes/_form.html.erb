@@ -2,30 +2,9 @@
 
 <%= form_with(model: recipe, local: true, novalidate: true, class: "mb-3") do |f| %>
   <!-- Label and input for business_id start -->
-  <div class="form-group">
-    <% business_class = "form-control" %>
-    <% business_was_invalid = recipe.errors.include?(:business) %>
-
-    <% if was_validated %>
-      <% if business_was_invalid %>
-        <% business_class << " is-invalid" %>
-      <% else %>
-        <% business_class << " is-valid" %>
-      <% end %>
-    <% end %>
-
-    <%= f.label :business_id %>
-    <!-- Input for business_id start -->
-    <%= f.collection_select :business_id, BusinessAccount.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for business_id end -->
-    <% if business_was_invalid %>
-      <% recipe.errors.full_messages_for(:business).each do |message| %>
-        <div class="invalid-feedback d-flex">
-          <%= message %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+  <!-- Input for "business_id" start -->
+  <%= f.hidden_field :business_id, value: current_business_account.id %>
+  <!-- Input for "business_id" end -->
   <!-- Label and input for business_id end -->
   <!-- Label and input for recipe_name start -->
   <div class="form-group">
