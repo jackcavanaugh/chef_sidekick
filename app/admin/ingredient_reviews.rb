@@ -1,5 +1,7 @@
 ActiveAdmin.register IngredientReview do
 
+ permit_params :ingredient_reviewer, :ingredient_supplier_join_id, :ingredient_supplier_rating, :ingredient_supplier_review_description
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
