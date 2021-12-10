@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Supplier Reviews
+
+    <a data-toggle="collapse" href="#ingredient_supplier_supplier_reviews_new_form">
+      Add supplier review
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @ingredient_supplier.supplier_reviews.each do |supplier_review| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <%= link_to supplier_review, supplier_review %>
+        <!-- Show link end -->
+
+        <!-- Delete link start -->
+        <%= link_to supplier_review, method: :delete, data: { confirm: "Do you really want to delete this supplier_review" } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+        <!-- Delete link end -->
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="ingredient_supplier_supplier_reviews_new_form">
+        <!-- New associationcollection form start -->
+
+        <!-- New associationcollection form end -->
+      </div>
+    </div>
+
+  </ul>
+</div>

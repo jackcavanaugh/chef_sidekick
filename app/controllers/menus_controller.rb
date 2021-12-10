@@ -42,8 +42,14 @@ class MenusController < ApplicationController
   # DELETE /menus/1
   def destroy
     @menu.destroy
-    redirect_to menus_url, notice: 'Menu was successfully destroyed.'
+    message = "Menu was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to menus_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

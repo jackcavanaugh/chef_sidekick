@@ -42,8 +42,14 @@ class RecipeMenuJoinsController < ApplicationController
   # DELETE /recipe_menu_joins/1
   def destroy
     @recipe_menu_join.destroy
-    redirect_to recipe_menu_joins_url, notice: 'Recipe menu join was successfully destroyed.'
+    message = "RecipeMenuJoin was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to recipe_menu_joins_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

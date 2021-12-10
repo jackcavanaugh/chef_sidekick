@@ -42,8 +42,14 @@ class RecipeIngredientJoinsController < ApplicationController
   # DELETE /recipe_ingredient_joins/1
   def destroy
     @recipe_ingredient_join.destroy
-    redirect_to recipe_ingredient_joins_url, notice: 'Recipe ingredient join was successfully destroyed.'
+    message = "RecipeIngredientJoin was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to recipe_ingredient_joins_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
