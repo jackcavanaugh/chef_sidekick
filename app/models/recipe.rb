@@ -2,18 +2,18 @@ class Recipe < ApplicationRecord
   # Direct associations
 
   has_many   :orders,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :recipe_menu_joins,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :recipe_ingredient_joins,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :chef,
-             :class_name => "BusinessAccount",
-             :foreign_key => "business_id",
-             :counter_cache => true
+             class_name: "BusinessAccount",
+             foreign_key: "business_id",
+             counter_cache: true
 
   # Indirect associations
 
@@ -24,5 +24,4 @@ class Recipe < ApplicationRecord
   def to_s
     chef.to_s
   end
-
 end

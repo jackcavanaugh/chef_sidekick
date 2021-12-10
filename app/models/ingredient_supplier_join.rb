@@ -2,13 +2,13 @@ class IngredientSupplierJoin < ApplicationRecord
   # Direct associations
 
   has_many   :ingredient_reviews,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :ingredient,
-             :counter_cache => true
+             counter_cache: true
 
   belongs_to :supplier,
-             :class_name => "IngredientSupplier"
+             class_name: "IngredientSupplier"
 
   # Indirect associations
 
@@ -19,5 +19,4 @@ class IngredientSupplierJoin < ApplicationRecord
   def to_s
     ingredient.to_s
   end
-
 end

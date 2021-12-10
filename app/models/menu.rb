@@ -2,11 +2,11 @@ class Menu < ApplicationRecord
   # Direct associations
 
   has_many   :recipe_menu_joins,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :menu_creators,
-             :class_name => "BusinessAccount",
-             :foreign_key => "menu_creator"
+             class_name: "BusinessAccount",
+             foreign_key: "menu_creator"
 
   # Indirect associations
 
@@ -17,5 +17,4 @@ class Menu < ApplicationRecord
   def to_s
     menu_name
   end
-
 end

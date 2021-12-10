@@ -12,5 +12,4 @@ class RecipeIngredientJoinResource < ApplicationResource
   belongs_to :recipe
 
   # Indirect associations
-
 end

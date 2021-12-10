@@ -14,5 +14,4 @@ class RecipeMenuJoin < ApplicationRecord
   def to_s
     menu.to_s
   end
-
 end

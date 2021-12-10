@@ -2,10 +2,10 @@ class RecipeIngredientJoin < ApplicationRecord
   # Direct associations
 
   belongs_to :ingredient,
-             :counter_cache => true
+             counter_cache: true
 
   belongs_to :recipe,
-             :counter_cache => true
+             counter_cache: true
 
   # Indirect associations
 
@@ -16,5 +16,4 @@ class RecipeIngredientJoin < ApplicationRecord
   def to_s
     recipe.to_s
   end
-
 end

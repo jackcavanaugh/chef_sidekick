@@ -1,13 +1,13 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe IngredientReviewResource, type: :resource do
-  describe 'creating' do
+  describe "creating" do
     let(:payload) do
       {
         data: {
-          type: 'ingredient_reviews',
-          attributes: { }
-        }
+          type: "ingredient_reviews",
+          attributes: {},
+        },
       }
     end
 
@@ -15,23 +15,24 @@ RSpec.describe IngredientReviewResource, type: :resource do
       IngredientReviewResource.build(payload)
     end
 
-    it 'works' do
-      expect {
-        expect(instance.save).to eq(true), instance.errors.full_messages.to_sentence
-      }.to change { IngredientReview.count }.by(1)
+    it "works" do
+      expect do
+        expect(instance.save).to eq(true),
+                                 instance.errors.full_messages.to_sentence
+      end.to change { IngredientReview.count }.by(1)
     end
   end
 
-  describe 'updating' do
+  describe "updating" do
     let!(:ingredient_review) { create(:ingredient_review) }
 
     let(:payload) do
       {
         data: {
           id: ingredient_review.id.to_s,
-          type: 'ingredient_reviews',
-          attributes: { } # Todo!
-        }
+          type: "ingredient_reviews",
+          attributes: {}, # Todo!
+        },
       }
     end
 
@@ -39,25 +40,25 @@ RSpec.describe IngredientReviewResource, type: :resource do
       IngredientReviewResource.find(payload)
     end
 
-    xit 'works (add some attributes and enable this spec)' do
-      expect {
+    xit "works (add some attributes and enable this spec)" do
+      expect do
         expect(instance.update_attributes).to eq(true)
-      }.to change { ingredient_review.reload.updated_at }
+      end.to change { ingredient_review.reload.updated_at }
       # .and change { ingredient_review.foo }.to('bar') <- example
     end
   end
 
-  describe 'destroying' do
+  describe "destroying" do
     let!(:ingredient_review) { create(:ingredient_review) }
 
     let(:instance) do
       IngredientReviewResource.find(id: ingredient_review.id)
     end
 
-    it 'works' do
-      expect {
+    it "works" do
+      expect do
         expect(instance.destroy).to eq(true)
-      }.to change { IngredientReview.count }.by(-1)
+      end.to change { IngredientReview.count }.by(-1)
     end
   end
 end

@@ -13,7 +13,7 @@ class Api::V1::MenusController < Api::V1::GraphitiController
     menu = MenuResource.build(params)
 
     if menu.save
-      render jsonapi: menu, status: 201
+      render jsonapi: menu, status: :created
     else
       render jsonapi_errors: menu
     end
@@ -33,7 +33,7 @@ class Api::V1::MenusController < Api::V1::GraphitiController
     menu = MenuResource.find(params)
 
     if menu.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: menu
     end

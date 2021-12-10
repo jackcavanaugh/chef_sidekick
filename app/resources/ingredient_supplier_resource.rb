@@ -15,5 +15,4 @@ class IngredientSupplierResource < ApplicationResource
              foreign_key: :supplier_id
 
   # Indirect associations
-
 end

@@ -13,7 +13,7 @@ class Api::V1::OrdersController < Api::V1::GraphitiController
     order = OrderResource.build(params)
 
     if order.save
-      render jsonapi: order, status: 201
+      render jsonapi: order, status: :created
     else
       render jsonapi_errors: order
     end
@@ -33,7 +33,7 @@ class Api::V1::OrdersController < Api::V1::GraphitiController
     order = OrderResource.find(params)
 
     if order.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: order
     end

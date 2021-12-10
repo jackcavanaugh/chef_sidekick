@@ -1,15 +1,15 @@
 class SupplierReviewsController < ApplicationController
-  before_action :set_supplier_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_supplier_review, only: %i[show edit update destroy]
 
   # GET /supplier_reviews
   def index
     @q = SupplierReview.ransack(params[:q])
-    @supplier_reviews = @q.result(:distinct => true).includes(:chef_reviewer, :supplier).page(params[:page]).per(10)
+    @supplier_reviews = @q.result(distinct: true).includes(:chef_reviewer,
+                                                           :supplier).page(params[:page]).per(10)
   end
 
   # GET /supplier_reviews/1
-  def show
-  end
+  def show; end
 
   # GET /supplier_reviews/new
   def new
@@ -17,17 +17,16 @@ class SupplierReviewsController < ApplicationController
   end
 
   # GET /supplier_reviews/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /supplier_reviews
   def create
     @supplier_review = SupplierReview.new(supplier_review_params)
 
     if @supplier_review.save
-      message = 'SupplierReview was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "SupplierReview was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @supplier_review, notice: message
       end
@@ -39,7 +38,8 @@ class SupplierReviewsController < ApplicationController
   # PATCH/PUT /supplier_reviews/1
   def update
     if @supplier_review.update(supplier_review_params)
-      redirect_to @supplier_review, notice: 'Supplier review was successfully updated.'
+      redirect_to @supplier_review,
+                  notice: "Supplier review was successfully updated."
     else
       render :edit
     end
@@ -49,22 +49,23 @@ class SupplierReviewsController < ApplicationController
   def destroy
     @supplier_review.destroy
     message = "SupplierReview was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to supplier_reviews_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_supplier_review
-      @supplier_review = SupplierReview.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def supplier_review_params
-      params.require(:supplier_review).permit(:reviewer, :supplier_id, :review_title, :review_rating, :review_content)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_supplier_review
+    @supplier_review = SupplierReview.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def supplier_review_params
+    params.require(:supplier_review).permit(:reviewer, :supplier_id,
+                                            :review_title, :review_rating, :review_content)
+  end
 end

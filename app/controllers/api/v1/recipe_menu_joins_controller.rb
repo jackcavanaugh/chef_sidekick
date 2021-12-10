@@ -13,7 +13,7 @@ class Api::V1::RecipeMenuJoinsController < Api::V1::GraphitiController
     recipe_menu_join = RecipeMenuJoinResource.build(params)
 
     if recipe_menu_join.save
-      render jsonapi: recipe_menu_join, status: 201
+      render jsonapi: recipe_menu_join, status: :created
     else
       render jsonapi_errors: recipe_menu_join
     end
@@ -33,7 +33,7 @@ class Api::V1::RecipeMenuJoinsController < Api::V1::GraphitiController
     recipe_menu_join = RecipeMenuJoinResource.find(params)
 
     if recipe_menu_join.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: recipe_menu_join
     end

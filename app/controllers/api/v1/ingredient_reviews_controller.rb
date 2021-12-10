@@ -13,7 +13,7 @@ class Api::V1::IngredientReviewsController < Api::V1::GraphitiController
     ingredient_review = IngredientReviewResource.build(params)
 
     if ingredient_review.save
-      render jsonapi: ingredient_review, status: 201
+      render jsonapi: ingredient_review, status: :created
     else
       render jsonapi_errors: ingredient_review
     end
@@ -33,7 +33,7 @@ class Api::V1::IngredientReviewsController < Api::V1::GraphitiController
     ingredient_review = IngredientReviewResource.find(params)
 
     if ingredient_review.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: ingredient_review
     end

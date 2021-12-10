@@ -1,23 +1,22 @@
 class BusinessAccount < ApplicationRecord
-  
   include JwtToken
-# Direct associations
+  # Direct associations
 
   has_many   :menus,
-             :foreign_key => "menu_creator",
-             :dependent => :destroy
+             foreign_key: "menu_creator",
+             dependent: :destroy
 
   has_many   :ingredient_reviews,
-             :foreign_key => "ingredient_reviewer",
-             :dependent => :destroy
+             foreign_key: "ingredient_reviewer",
+             dependent: :destroy
 
   has_many   :supplier_reviews,
-             :foreign_key => "reviewer",
-             :dependent => :destroy
+             foreign_key: "reviewer",
+             dependent: :destroy
 
   has_many   :recipes,
-             :foreign_key => "business_id",
-             :dependent => :destroy
+             foreign_key: "business_id",
+             dependent: :destroy
 
   # Indirect associations
 

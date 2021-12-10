@@ -19,5 +19,4 @@ class RecipeResource < ApplicationResource
              foreign_key: :business_id
 
   # Indirect associations
-
 end

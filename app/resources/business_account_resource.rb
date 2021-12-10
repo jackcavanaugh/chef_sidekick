@@ -21,5 +21,4 @@ class BusinessAccountResource < ApplicationResource
              foreign_key: :business_id
 
   # Indirect associations
-
 end

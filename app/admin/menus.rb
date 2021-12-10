@@ -1,6 +1,5 @@
 ActiveAdmin.register Menu do
-
- permit_params :menu_name, :menu_creator, :menu_description
+  permit_params :menu_name, :menu_creator, :menu_description
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -14,5 +13,4 @@ ActiveAdmin.register Menu do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
 end

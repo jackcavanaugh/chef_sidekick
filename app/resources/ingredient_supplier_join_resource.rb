@@ -19,5 +19,4 @@ class IngredientSupplierJoinResource < ApplicationResource
              resource: IngredientSupplierResource
 
   # Indirect associations
-
 end

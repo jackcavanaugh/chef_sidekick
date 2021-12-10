@@ -13,7 +13,7 @@ class Api::V1::IngredientSupplierJoinsController < Api::V1::GraphitiController
     ingredient_supplier_join = IngredientSupplierJoinResource.build(params)
 
     if ingredient_supplier_join.save
-      render jsonapi: ingredient_supplier_join, status: 201
+      render jsonapi: ingredient_supplier_join, status: :created
     else
       render jsonapi_errors: ingredient_supplier_join
     end
@@ -33,7 +33,7 @@ class Api::V1::IngredientSupplierJoinsController < Api::V1::GraphitiController
     ingredient_supplier_join = IngredientSupplierJoinResource.find(params)
 
     if ingredient_supplier_join.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: ingredient_supplier_join
     end

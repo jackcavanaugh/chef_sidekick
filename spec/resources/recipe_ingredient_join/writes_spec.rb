@@ -1,13 +1,13 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe RecipeIngredientJoinResource, type: :resource do
-  describe 'creating' do
+  describe "creating" do
     let(:payload) do
       {
         data: {
-          type: 'recipe_ingredient_joins',
-          attributes: { }
-        }
+          type: "recipe_ingredient_joins",
+          attributes: {},
+        },
       }
     end
 
@@ -15,23 +15,24 @@ RSpec.describe RecipeIngredientJoinResource, type: :resource do
       RecipeIngredientJoinResource.build(payload)
     end
 
-    it 'works' do
-      expect {
-        expect(instance.save).to eq(true), instance.errors.full_messages.to_sentence
-      }.to change { RecipeIngredientJoin.count }.by(1)
+    it "works" do
+      expect do
+        expect(instance.save).to eq(true),
+                                 instance.errors.full_messages.to_sentence
+      end.to change { RecipeIngredientJoin.count }.by(1)
     end
   end
 
-  describe 'updating' do
+  describe "updating" do
     let!(:recipe_ingredient_join) { create(:recipe_ingredient_join) }
 
     let(:payload) do
       {
         data: {
           id: recipe_ingredient_join.id.to_s,
-          type: 'recipe_ingredient_joins',
-          attributes: { } # Todo!
-        }
+          type: "recipe_ingredient_joins",
+          attributes: {}, # Todo!
+        },
       }
     end
 
@@ -39,25 +40,25 @@ RSpec.describe RecipeIngredientJoinResource, type: :resource do
       RecipeIngredientJoinResource.find(payload)
     end
 
-    xit 'works (add some attributes and enable this spec)' do
-      expect {
+    xit "works (add some attributes and enable this spec)" do
+      expect do
         expect(instance.update_attributes).to eq(true)
-      }.to change { recipe_ingredient_join.reload.updated_at }
+      end.to change { recipe_ingredient_join.reload.updated_at }
       # .and change { recipe_ingredient_join.foo }.to('bar') <- example
     end
   end
 
-  describe 'destroying' do
+  describe "destroying" do
     let!(:recipe_ingredient_join) { create(:recipe_ingredient_join) }
 
     let(:instance) do
       RecipeIngredientJoinResource.find(id: recipe_ingredient_join.id)
     end
 
-    it 'works' do
-      expect {
+    it "works" do
+      expect do
         expect(instance.destroy).to eq(true)
-      }.to change { RecipeIngredientJoin.count }.by(-1)
+      end.to change { RecipeIngredientJoin.count }.by(-1)
     end
   end
 end

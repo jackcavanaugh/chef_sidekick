@@ -13,7 +13,7 @@ class Api::V1::SupplierReviewsController < Api::V1::GraphitiController
     supplier_review = SupplierReviewResource.build(params)
 
     if supplier_review.save
-      render jsonapi: supplier_review, status: 201
+      render jsonapi: supplier_review, status: :created
     else
       render jsonapi_errors: supplier_review
     end
@@ -33,7 +33,7 @@ class Api::V1::SupplierReviewsController < Api::V1::GraphitiController
     supplier_review = SupplierReviewResource.find(params)
 
     if supplier_review.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: supplier_review
     end

@@ -16,5 +16,4 @@ class IngredientReviewResource < ApplicationResource
              foreign_key: :ingredient_reviewer
 
   # Indirect associations
-
 end

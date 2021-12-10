@@ -13,7 +13,7 @@ class Api::V1::BusinessAccountsController < Api::V1::GraphitiController
     business_account = BusinessAccountResource.build(params)
 
     if business_account.save
-      render jsonapi: business_account, status: 201
+      render jsonapi: business_account, status: :created
     else
       render jsonapi_errors: business_account
     end
@@ -33,7 +33,7 @@ class Api::V1::BusinessAccountsController < Api::V1::GraphitiController
     business_account = BusinessAccountResource.find(params)
 
     if business_account.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: business_account
     end

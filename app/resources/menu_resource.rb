@@ -15,5 +15,4 @@ class MenuResource < ApplicationResource
              foreign_key: :menu_creator
 
   # Indirect associations
-
 end
