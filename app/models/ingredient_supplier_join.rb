@@ -1,6 +1,9 @@
 class IngredientSupplierJoin < ApplicationRecord
   # Direct associations
 
+  has_many   :ingredient_reviews,
+             :dependent => :destroy
+
   belongs_to :ingredient,
              :counter_cache => true
 
